@@ -1,7 +1,7 @@
 {
-    "name": "𝑨𝑵𝑲𝑰𝑻 𝑼𝑷𝑳𝑶𝑨𝑫𝑬𝑹",
-    "description": "𝑻𝑿𝑻 𝑻𝒐 𝑽𝒊𝒅𝒆𝒐 𝑬𝒙𝒕𝒓𝒂𝒄𝒕𝒐𝒓 𝑭𝒐𝒓 𝑻𝒆𝒍𝒆𝒈𝒓𝒂𝒎",
-    "logo": "https://graph.org/file/f12a07e9ed8dc349da2e7.jpg",
+    "name": "ANKIT UPLOADER",
+    "description": "Bot For Telegram",
+    "logo": "https://graph.org/file/818aa312b35052a5c4d74.jpg",
     "keywords": [
         "text-video",
         "video-extract",
@@ -9,18 +9,21 @@
     ],
     "repository": "https://github.com/AnkitShakya95/Personal",
     "success_url": "https://t.me/Ankit_Shakya72",
-    "stack": "heroku-22",
+    "stack": "container",
     "env": {
         "API_ID": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑨𝒑𝒊 𝑰𝑫",
+            "description": "Enter Your Api Id",
+            "value": "26057278",
             "required": true
         },
         "API_HASH": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑨𝒑𝒊 𝑯𝒂𝒔𝒉",
+            "description": "Enter Your Api Hash",
+            "value": "9852a3e0e133790544c1a04c40aab60e",
             "required": true
         },
         "BOT_TOKEN": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑩𝒐𝒕 𝑻𝒐𝒌𝒆𝒏",
+            "description": "Enter Your Telegram Bot Token",
+            "value": "7991835922:AAEKU5Mx4sIEHVCsWhskZUlfgQIumVa_eFU",
             "required": true
         },
     },
@@ -33,4 +36,4 @@
             "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
         }
     ]
-    }
+}
