@@ -34,64 +34,13 @@ bot = Client(
     bot_token=BOT_TOKEN
 )
 
-# Get the MongoDB collection for this bot
-collection = get_collection(BOT_NAME)
 # Constants
 OWNER_IDS = [7341059064]  # Replace with the actual owner user IDs
 
 cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
 
 # Global variables
-authorized_users = []
 my_name = "𝐀𝐍𝐊𝐈𝐓❤️"
-
-# Load initial data from files
-def load_initial_data():
-    global authorized_users, my_name,
-         
-    authorized_users = load_authorized_users(collection)
-    my_name = load_name(collection)
-
-# Filters
-def owner_filter(_, __, message):
-    return bool(message.from_user and message.from_user.id in OWNER_IDS)
-
-def auth_user_filter(_, __, message):
-    return bool(message.from_user and message.from_user.id in authorized_users)
-
-auth_or_owner_filter = filters.create(lambda _, __, m: auth_user_filter(_, __, m) or owner_filter(_, __, m))
-
-@bot.on_message(filters.command("auth_users") & filters.create(owner_filter))
-async def show_auth_users(client: Client, message: Message):
-    await message.reply(f"Authorized users: {authorized_users}")
-
-@bot.on_message(filters.command("add_auth") & filters.create(owner_filter))
-async def add_auth_user(client: Client, message: Message):
-    global authorized_users
-    try:
-        new_user_id = int(message.text.split(maxsplit=1)[1])
-        if new_user_id not in authorized_users:
-            authorized_users.append(new_user_id)
-            save_authorized_users(collection, authorized_users)
-            await message.reply(f"User {new_user_id} added to authorized users.")
-        else:
-            await message.reply(f"User {new_user_id} is already in the authorized users list.")
-    except (IndexError, ValueError):
-        await message.reply("Please provide a valid user ID.")
-
-@bot.on_message(filters.command("remove_auth") & filters.create(owner_filter))
-async def remove_auth_user(client: Client, message: Message):
-    global authorized_users
-    try:
-        user_to_remove = int(message.text.split(maxsplit=1)[1])
-        if user_to_remove in authorized_users:
-            authorized_users.remove(user_to_remove)
-            save_authorized_users(collection, authorized_users)
-            await message.reply(f"User {user_to_remove} removed from authorized users.")
-        else:
-            await message.reply(f"User {user_to_remove} is not in the authorized users list.")
-    except (IndexError, ValueError):
-        await message.reply("Please provide a valid user ID.")
 
 # Define aiohttp routes
 routes = web.RouteTableDef()
