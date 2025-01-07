@@ -43,30 +43,23 @@ cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
 
 # Global variables
 authorized_users = []
-ALLOWED_CHANNEL_IDS = []
 my_name = "𝐀𝐍𝐊𝐈𝐓❤️"
 
 # Load initial data from files
 def load_initial_data():
-    global authorized_users, ALLOWED_CHANNEL_IDS, my_name,
+    global authorized_users, my_name,
          
     authorized_users = load_authorized_users(collection)
-    ALLOWED_CHANNEL_IDS = load_allowed_channel_ids(collection)
     my_name = load_name(collection)
 
 # Filters
 def owner_filter(_, __, message):
     return bool(message.from_user and message.from_user.id in OWNER_IDS)
 
-def channel_filter(_, __, message):
-    return bool(message.chat and message.chat.id in ALLOWED_CHANNEL_IDS)
-
 def auth_user_filter(_, __, message):
     return bool(message.from_user and message.from_user.id in authorized_users)
 
 auth_or_owner_filter = filters.create(lambda _, __, m: auth_user_filter(_, __, m) or owner_filter(_, __, m))
-auth_owner_channel_filter = filters.create(lambda _, __, m: auth_user_filter(_, __, m) or owner_filter(_, __, m) or channel_filter(_, __, m))
-owner_or_channel_filter = filters.create(lambda _, __, m: owner_filter(_, __, m) or channel_filter(_, __, m))
 
 @bot.on_message(filters.command("auth_users") & filters.create(owner_filter))
 async def show_auth_users(client: Client, message: Message):
