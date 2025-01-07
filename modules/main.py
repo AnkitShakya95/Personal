@@ -18,7 +18,6 @@ from pyromod import listen
 from subprocess import getstatusoutput
 from pytube import YouTube
 from aiohttp import web
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
@@ -34,13 +33,12 @@ bot = Client(
     bot_token=BOT_TOKEN
 )
 
-# Constants
-ADMIN_ID = [7341059064]  # Replace with the actual owner user IDs
-
 cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
 
 # Global variables
 my_name = "𝐀𝐍𝐊𝐈𝐓❤️"
+
+
 
 # Define aiohttp routes
 routes = web.RouteTableDef()
@@ -162,7 +160,7 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command("ankit","upload") & auth_or_owner_filter))
+@bot.on_message(filters.command=["ankit","upload"])
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"**🔹Hi I am Poweful TXT Downloader📥 Bot.**\n🔹**Send me the TXT file and wait.**")
     input: Message = await bot.listen(editable.chat.id)
