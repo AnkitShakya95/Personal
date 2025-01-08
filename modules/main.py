@@ -24,6 +24,24 @@ from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+import cloudscraper
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
+from base64 import b64encode, b64decode
+
+photo1 = 'https://envs.sh/PQ_.jpg'
+getstatusoutput(f"wget {photo1} -O 'photo.jpg'")    
+photo = "photo.jpg"
+
+credit ="😎𝖘:)™~" 
+OWNER = int(os.environ.get("OWNER", 6530997270))
+try: 
+    ADMINS=[] 
+    for x in (os.environ.get("ADMINS", "6530997270").split()):  
+        ADMINS.append(int(x)) 
+except ValueError: 
+        raise Exception("Your Admins list does not contain valid integers.") 
+ADMINS.append(OWNER)
 
 # Initialize the bot
 bot = Client(
