@@ -8,8 +8,7 @@ import requests
 import subprocess
 import urllib.parse
 import yt_dlp
-import cloudscraper
-
+import m3u8
 import core as helper
 from utils import progress_bar
 from vars import API_ID, API_HASH, BOT_TOKEN
@@ -33,11 +32,10 @@ photo1 = 'https://envs.sh/PQ_.jpg'
 getstatusoutput(f"wget {photo1} -O 'photo.jpg'")    
 photo = "photo.jpg"
 
-credit ="😎𝖘:)™~" 
-OWNER = int(os.environ.get("OWNER", 6530997270))
+OWNER = int(os.environ.get("OWNER", 7341059064))
 try: 
     ADMINS=[] 
-    for x in (os.environ.get("ADMINS", "6530997270").split()):  
+    for x in (os.environ.get("ADMINS", "7341059064").split()):  
         ADMINS.append(int(x)) 
 except ValueError: 
         raise Exception("Your Admins list does not contain valid integers.") 
